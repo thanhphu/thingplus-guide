@@ -15,9 +15,10 @@ Redirect the user to allow or not for the Web Server(or Confidential Client) to 
 
 ```json
 GET https://api.thingplus.net/v1/oauth2/authorize
-
-Example>
-  GET https://api.thingplus.net/v1/oauth2/authorize?client_id={CLIENT_ID}&response_type=code&redirect_uri={REDIRECT_URI}
+```
+> Example
+```
+GET https://api.thingplus.net/v1/oauth2/authorize?client_id={CLIENT_ID}&response_type=code&redirect_uri={REDIRECT_URI}
 ```
 
 * URL Query parameters
@@ -91,28 +92,31 @@ Content-Type : application/x-www-form-urlencoded
   - Possibly can be changed without advance notification
 
 ## Scopes
-Scopes let you specify exactly what type of access you need. Scopes limit access for OAuth tokens. They do not grant any additional permission beyond that which the user already has.
+Scopes let you ask for permission from the user and Thing+. Scopes limit access for OAuth tokens. They do not grant any additional permission beyond that which the user already has.
 
-For the Authorization Code Grant, requested scopes will be displayed to the user on the authorize form.
+For the Authorization Code Grant, requested scopes will be displayed to the user on the authorization screen, as follows:
 
-|     Scope          |                Name              | resources (API) |                          Description
-| ------------------ | -------------------------------- | --- | ------------------------------------------------------------
-| (no scope)         |                                  | | Cannot access any scopes
-| user-profile       | User Profile Read and Update     | users/me, /changePassword | ___TBD___ Read and update the profile of the user
-| user-profile-read  | User Profile Read                | users/me | Read the profile of the user
-| gateway            | Gateway Ceate/Read/Update/Delete | /gateways, /registerGateway, /registerGatewayKey, /manageGateway, /controlActuator, /sensorTypes, /sensorDrivers, /gatewayModels | ___TBD___ Register a gateway/device/sensor and read, update, delete gateways/devices/sensors for which the user has permissions
+![OAuth authorization screen](images/oauth-authorize.png)
+
+Below is a list of scopes your applicaiton can request. Some scope is under development and is not yet available
+
+|     Scope          |                Name              | resources (API) |                          Description | Not available yet
+| ------------------ | -------------------------------- | --------------- | -------------------------------------|---------------------
+| (no scope)         |                                  | | Cannot access any scopes | 
+| user-profile       | User Profile Read and Update     | users/me, /changePassword | Read and update the profile of the user | X
+| user-profile-read  | User Profile Read                | users/me | Read the profile of the user |
+| gateway            | Gateway Create/Read/Update/Delete | /gateways, /registerGateway, /registerGatewayKey, /manageGateway, /controlActuator, /sensorTypes,  +/sensorDrivers, /gatewayModels | Register a gateway/device/sensor and read, update, delete gateways/devices/sensors for which the user has permissions |
 | gateway-read       | Gateway Read                     | /gateways, /controlActuator | Read gateways/devices/sensors and control actuator for which the user has permissions
 | gateway-update     | Gateway Read/Update              | /gateways, /manageGateway, /controlActuator | Read and update gateways/devices/sensors, control actuator, and manage the gateways for which the user has permissions
 | timeline-read      | Timeline Read                    | /timelines | Read timelines of the user
 | tag                | Tag Ceate/Read/Update/Delete     | /tags | Create, read, update and delete tags of the user
 | tag-read           | Tag Read                         | /tags | Read tags of the user
-| rule               | Rule Read/Update/Delete          | /rules, /pushDevices | ___TBD___ Read, update and delete rules of the user
+| rule               | Rule Read/Update/Delete          | /rules, /pushDevices | Read, update and delete rules of the user | X
 | rule-read          | Rule Read                        | /rules | Read rules of the user
 | service-read       | Service Read                     | /services | Read service for which the user is registered
 | site-read          | Site Read                        | /site | Read site in which the user is registered
-| billing-read       | Billing Read                     | /billings | ___TBD___ Read billing information of the user
+| billing-read       | Billing Read                     | /billings | Read billing information of the user | X
 
-___TBD___ : Not available now
 
 ## Errors
 ### Errors for the authorization request

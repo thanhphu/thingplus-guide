@@ -63,7 +63,7 @@
 - Put your OAuth client ID in the `reqId` field. This should be unique across all applications connected to Thing+
 - Put your OAuth client secret in the `clientSecret` field. These two fields should not be exposed to anyone. Keep it **secret**
 - Put the name of your applicaiton into the `name` field. This is used to identify your application. You should put either your company or service name
-- Change the field `scopes` to determine the rights for your application. Read more about acceptable scopes [here](./OAuth2.md)
+- Change the field `scopes` to determine the rights for your application. Read more about acceptable scopes [here](./OAuth2.md#Scopes)
 - Click the _Send_ button
 
 6. Result should display **201 Created**
